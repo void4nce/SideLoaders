@@ -81,21 +81,6 @@
             margin-top: 10px; /* Adjusts the vertical space between "Sideloaders" and "by voidance" */
         }
 
-        /* Transparency effect to fade out text */
-        .fade-out {
-            animation: fadeOutText 2s forwards;
-        }
-
-        /* Animation to fade out both texts */
-        @keyframes fadeOutText {
-            0% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-
         /* "loading..." text styling */
         .loading {
             font-size: 1.5em;
@@ -127,20 +112,18 @@
 
         /* "Download E-Sign" button styling */
         .download-btn {
-            font-size: 1.2em;
+            font-size: 1em; /* Smaller button text */
             font-weight: bold;
             background-color: white; /* White background */
             color: #121212; /* Dark text */
             border: none;
-            padding: 15px 30px;
+            padding: 12px 25px; /* Smaller padding for a smaller button */
             cursor: pointer;
             border-radius: 12px; /* UI corners */
             opacity: 0;
             transition: opacity 0.5s ease;
-            margin-top: 20px; /* Space below "Side Loaders" */
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            margin-top: 15px; /* Space below "Side Loaders" */
+            display: inline-block;
         }
 
         /* Show the button when it's time */
