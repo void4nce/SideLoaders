@@ -86,7 +86,7 @@
             animation: fadeOutText 2s forwards;
         }
 
-        /* Animation to fade out both texts without changing size */
+        /* Animation to fade out both texts */
         @keyframes fadeOutText {
             0% {
                 opacity: 1;
@@ -108,6 +108,23 @@
             animation: fadeInText 1s forwards; /* Fade in when "loading..." appears */
         }
 
+        /* "Side Loaders" top-center text styling */
+        .side-loaders {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #9b59b6, #00ffff); /* Purple to Cyan gradient */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            opacity: 0;
+            position: absolute;
+            top: 10px; /* Position it at the top center */
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
+            animation: fadeInText 1s 2s forwards; /* Fade in after a delay */
+        }
+
     </style>
 </head>
 <body>
@@ -117,6 +134,7 @@
     </div>
 
     <div id="loading" class="loading" style="display:none;">loading...</div>
+    <div id="sideLoadersText" class="side-loaders" style="display:none;">Side Loaders</div>
 
     <script>
         // Wait for 4 seconds, then start fading out the "Sideloaders" and "by voidance" texts
@@ -131,6 +149,15 @@
                 document.getElementById('loading').style.display = 'block';
             }, 2000); // delay 2 seconds after fading out
         }, 4000); // initial delay of 4 seconds
+
+        // After 5 seconds of "loading..." text, fade it out
+        setTimeout(function() {
+            document.getElementById('loading').classList.add('fade-out');
+            // After fading out "loading...", show "Side Loaders" text after 2 seconds
+            setTimeout(function() {
+                document.getElementById('sideLoadersText').style.display = 'block';
+            }, 2000);
+        }, 5000); // 5 seconds delay before fading out "loading..."
     </script>
 </body>
 </html>
