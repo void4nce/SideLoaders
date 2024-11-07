@@ -3,89 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Side Loaders</title>
+    <title>Sideloaders</title>
     <style>
-        /* General styles */
-        * {
+        /* Global Styles */
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body, html {
-            height: 100%;
-            width: 100%;
+            font-family: 'Gotham', sans-serif;
+            background-color: #121212;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #111;
-            font-family: Arial, sans-serif;
+            height: 100vh;
+            text-align: center;
+            position: relative;
             overflow: hidden;
         }
 
-        .text-container {
+        /* Background styling */
+        body::before {
+            content: "";
             position: absolute;
-            text-align: center;
-            color: white;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 20%, rgba(0, 0, 0, 0.8) 80%);
+            filter: blur(10px);
+            z-index: -1;
         }
 
+        /* "Sideloaders" text styling */
         h1 {
-            font-size: 4rem;
-            transition: all 0.5s ease-in-out;
+            font-size: 4em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #9b59b6, #00ffff); /* Purple to Cyan gradient */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.6);
+        }
+
+        /* "by voidance" text styling */
+        .author {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.7);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+            font-family: sans-serif;
         }
     </style>
 </head>
 <body>
-
-    <div class="text-container">
-        <h1 id="animated-text">Side Loaders</h1>
+    <div>
+        <h1>Sideloaders</h1>
+        <div class="author">by voidance</div>
     </div>
 
     <script>
-        // Get the h1 element
-        const animatedText = document.getElementById('animated-text');
-
-        // Function to update text
-        function updateText(newText) {
-            animatedText.innerText = newText;
-        }
-
-        // Animate the sine wave movement and shrinking effect
-        function animateText() {
-            let startTime = null;
-            let amplitude = 50; // Maximum vertical displacement (sine movement amplitude)
-            let duration = 2000; // Duration of the sine wave movement in milliseconds
-            let shrinkDuration = 1500; // Time for shrinking effect in milliseconds
-            let sineStartTime = Date.now(); // Store start time for sine wave animation
-
-            // Initial movement of text downwards (wait for 3 seconds)
-            setTimeout(() => {
-                // Shrinking and moving upwards
-                requestAnimationFrame(function animate(time) {
-                    if (!startTime) startTime = time;
-                    const progress = (time - startTime) / shrinkDuration;
-                    
-                    if (progress < 1) {
-                        const scale = Math.max(1 - progress, 0.2); // Shrink from 1 to 0.2
-                        const sineProgress = Math.sin((time - sineStartTime) / duration * 2 * Math.PI);
-                        animatedText.style.transform = `translateY(${amplitude * sineProgress}px) scale(${scale})`;
-                        requestAnimationFrame(animate);
-                    } else {
-                        // After shrinking is done, move the text near the top
-                        animatedText.style.transform = `translateY(-80vh) scale(0.2)`; // stop at the top
-                    }
-                });
-            }, 3000); // Start the shrinking animation after 3 seconds
-
-        }
-
-        // Change text to "By Voidance" after 2 seconds
-        setTimeout(() => {
-            updateText('By Voidance');
-            animateText();
-        }, 2000); // Change text after 2 seconds
-
+        // You can add any JavaScript code here if you'd like to add interactivity later
+        // For now, it just stands as a static page
     </script>
-
 </body>
 </html>
