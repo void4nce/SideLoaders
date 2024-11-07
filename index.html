@@ -129,18 +129,21 @@
         .download-btn {
             font-size: 1.2em;
             font-weight: bold;
-            background-color: #00ffff; /* Cyan background */
+            background-color: white; /* White background */
             color: #121212; /* Dark text */
             border: none;
             padding: 15px 30px;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 12px; /* UI corners */
             opacity: 0;
-            transition: opacity 0.5s;
+            transition: opacity 0.5s ease;
             margin-top: 20px; /* Space below "Side Loaders" */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Make button visible */
+        /* Show the button when it's time */
         .show-button {
             opacity: 1 !important;
         }
@@ -185,7 +188,7 @@
 
         // When the second "Side Loaders" text is fully visible, show the button
         setTimeout(function() {
-            // Show the button after the "Side Loaders" text finishes appearing
+            // Show the button after the second "Side Loaders" text is visible
             document.getElementById('downloadBtn').style.display = 'inline-block';
             document.getElementById('downloadBtn').classList.add('show-button'); // make the button visible with a smooth transition
         }, 7000); // Button appears after 7 seconds
