@@ -156,6 +156,8 @@
             // After fading out "loading...", show "Side Loaders" text after 2 seconds
             setTimeout(function() {
                 document.getElementById('sideLoadersText').style.display = 'block';
+                // Hide the "loading..." text as soon as the second "Side Loaders" text appears
+                document.getElementById('loading').style.display = 'none';
             }, 2000);
         }, 5000); // 5 seconds delay before fading out "loading..."
     </script>
