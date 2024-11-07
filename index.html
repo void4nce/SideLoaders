@@ -33,7 +33,6 @@
             font-size: 4rem;
             transition: all 0.5s ease-in-out;
         }
-
     </style>
 </head>
 <body>
@@ -61,7 +60,7 @@
 
             // Initial movement of text downwards (wait for 3 seconds)
             setTimeout(() => {
-                // Shrinking and moving up
+                // Shrinking and moving upwards
                 requestAnimationFrame(function animate(time) {
                     if (!startTime) startTime = time;
                     const progress = (time - startTime) / shrinkDuration;
@@ -72,8 +71,8 @@
                         animatedText.style.transform = `translateY(${amplitude * sineProgress}px) scale(${scale})`;
                         requestAnimationFrame(animate);
                     } else {
-                        // After shrinking is done, move the text completely out of the view
-                        animatedText.style.transform = `translateY(-100vh) scale(0)`;
+                        // After shrinking is done, move the text near the top
+                        animatedText.style.transform = `translateY(-80vh) scale(0.2)`; // stop at the top
                     }
                 });
             }, 3000); // Start the shrinking animation after 3 seconds
