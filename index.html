@@ -36,13 +36,37 @@
 
         /* "Sideloaders" text styling */
         h1 {
-            font-size: 4em;
+            font-size: 2em; /* Start with smaller size */
             font-weight: bold;
             background: linear-gradient(45deg, #9b59b6, #00ffff); /* Purple to Cyan gradient */
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.6);
+            opacity: 0; /* Initially hidden */
+            animation: growText 2s forwards, fadeInText 0.5s 2s forwards;
+        }
+
+        /* Animation to grow the text */
+        @keyframes growText {
+            0% {
+                font-size: 2em;
+                opacity: 0;
+            }
+            100% {
+                font-size: 4em;
+                opacity: 1;
+            }
+        }
+
+        /* Fade-in "by voidance" text */
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         /* "by voidance" text styling */
@@ -52,7 +76,10 @@
             color: rgba(255, 255, 255, 0.7);
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
             font-family: sans-serif;
+            opacity: 0; /* Initially hidden */
+            animation: fadeInText 1s 2s forwards; /* Fade in after 2 seconds */
         }
+
     </style>
 </head>
 <body>
@@ -62,8 +89,8 @@
     </div>
 
     <script>
-        // You can add any JavaScript code here if you'd like to add interactivity later
-        // For now, it just stands as a static page
+        // JavaScript to ensure the animations are controlled and timed
+        // However, no additional JavaScript is needed for the animation itself.
     </script>
 </body>
 </html>
