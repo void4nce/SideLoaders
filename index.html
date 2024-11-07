@@ -81,17 +81,54 @@
             margin-top: 10px; /* Adjusts the vertical space between "Sideloaders" and "by voidance" */
         }
 
+        /* Transparency effect to fade out text */
+        .fade-out {
+            animation: fadeOutText 2s forwards;
+        }
+
+        /* Animation to fade out both texts */
+        @keyframes fadeOutText {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* "loading..." text styling */
+        .loading {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.7);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+            font-family: sans-serif;
+            opacity: 0;
+            animation: fadeInText 1s forwards; /* Fade in when "loading..." appears */
+        }
+
     </style>
 </head>
 <body>
-    <div>
+    <div id="content">
         <h1>Sideloaders</h1>
         <div class="author">by voidance</div>
     </div>
 
+    <div id="loading" class="loading" style="display:none;">loading...</div>
+
     <script>
-        // JavaScript to ensure the animations are controlled and timed
-        // However, no additional JavaScript is needed for the animation itself.
+        // Wait for 4 seconds, then start fading out the "Sideloaders" and "by voidance" texts
+        setTimeout(function() {
+            // Add fade-out effect to both texts
+            document.querySelector('h1').classList.add('fade-out');
+            document.querySelector('.author').classList.add('fade-out');
+            
+            // After another 2 seconds, show the "loading..." text
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'block';
+            }, 2000); // delay 2 seconds after fading out
+        }, 4000); // initial delay of 4 seconds
     </script>
 </body>
 </html>
