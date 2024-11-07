@@ -86,7 +86,7 @@
             animation: fadeOutText 2s forwards;
         }
 
-        /* Animation to fade out both texts */
+        /* Animation to fade out both texts without changing size */
         @keyframes fadeOutText {
             0% {
                 opacity: 1;
@@ -104,6 +104,7 @@
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
             font-family: sans-serif;
             opacity: 0;
+            position: absolute;
             animation: fadeInText 1s forwards; /* Fade in when "loading..." appears */
         }
 
@@ -126,6 +127,7 @@
             
             // After another 2 seconds, show the "loading..." text
             setTimeout(function() {
+                // Make sure the "loading..." text appears in the center of the page
                 document.getElementById('loading').style.display = 'block';
             }, 2000); // delay 2 seconds after fading out
         }, 4000); // initial delay of 4 seconds
